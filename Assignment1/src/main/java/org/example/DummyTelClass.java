@@ -21,12 +21,14 @@ public class DummyTelClass {
      *                  If missing, the function will throw {@link NullPointerException} since the function cannot parse the duration.
      * @return totalCost in String represent, round up to 2 decimal in {@code HALF_UP} Rounding mode
      * @throws Exception {@link NullPointerException} when missing inputs, {@link NumberFormatException} when cannot parse to number, {@link InvalidFormattedInput} when wrongly formatted inputs are passed in.
-     *                  If any exception not represent in catch, the general Exception is thrown with system message.
+     *                   If any exception not represent in catch, the general Exception is thrown with system message.
      */
     public static String DummyTel(String timeStart, String duration) throws Exception {
         Pair<Integer, Integer> timeStartFormatted;
         try {
             String[] splitTimeStart = timeStart.split(":");
+            if (splitTimeStart[0].contains("-"))
+                throw new InvalidFormattedInput("Your timeStart input is negative");
             timeStartFormatted = new Pair<>(Integer.parseInt(splitTimeStart[0]), Integer.parseInt(splitTimeStart[1]));
             if (timeStartFormatted.first < 0 || timeStartFormatted.first > 23 || timeStartFormatted.second < 0 || timeStartFormatted.second > 59) {
                 throw new InvalidFormattedInput("Your timeStart input is not 24-hour format");
@@ -42,6 +44,8 @@ public class DummyTelClass {
         Pair<BigInteger, Integer> durationFormatted;
         try {
             String[] splitDuration = duration.split(":");
+            if (splitDuration[0].contains("-"))
+                throw new InvalidFormattedInput("Your duration input is negative");
             durationFormatted = new Pair<>(new BigInteger(splitDuration[0]), Integer.parseInt(splitDuration[1]));
             if (durationFormatted.first.compareTo(BigInteger.valueOf(0)) < 0 || durationFormatted.second < 0 || durationFormatted.second > 59) {
                 throw new InvalidFormattedInput("Your duration input is not hour-minute format");
@@ -64,6 +68,7 @@ public class DummyTelClass {
 
     /**
      * Pair class for saving values in pair.
+     *
      * @param <T> Type of first value.
      * @param <K> Type of second value.
      */

@@ -32,7 +32,7 @@ public class DummyTelTest {
         try {
             Assert.assertEquals("1 hour full price call test", "26.78", DummyTelClass.DummyTel("15:00", "01:00"));
         } catch (Exception e) {
-            Assert.fail("Fail cause by: " + e.getCause());
+            Assert.fail("Fail caused by: " + e.getCause());
         }
     }
 
