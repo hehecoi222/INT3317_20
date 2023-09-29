@@ -24,7 +24,7 @@ import org.junit.Test;
  * Invalid timeStart
  * Invalid duration
  */
-public class DummyTelECTest {
+public class DummyTelECPTest {
     /**
      * T1 - D1 combination
      * Expected output: From 8-18 and longer than 60
