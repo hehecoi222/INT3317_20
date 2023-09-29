@@ -239,4 +239,103 @@ public class DummyTelBVATest {
 
         Assert.assertTrue(exception.getMessage().contains("timeStart input is wrongly formatted"));
     }
+
+    /**
+     * DH1 bound left right
+     * <p>
+     * Input: 13:30, 0:30
+     * Expected output: 15.75
+     */
+    @Test
+    public void testDummyTelBVDH1BoundLR() {
+        try {
+            Assert.assertEquals("DH1BLR", "15.75", DummyTelClass.DummyTel("13:30", "0:30"));
+        } catch (Exception e) {
+            Assert.fail("Fail caused by: " + e.getCause());
+        }
+    }
+
+    /**
+     * DH1 bound near left
+     * <p>
+     * Input: 13:30, -1:30
+     * Expected output: Invalid duration format
+     */
+    @Test
+    public void testDummyTelBVDH1BoundnL() {
+        Exception exception = Assert.assertThrows("DH1BnL", Exception.class, () -> DummyTelClass.DummyTel("13:30", "-1:30"));
+
+        Assert.assertTrue(exception.getMessage().contains("duration input is wrongly formatted"));
+    }
+
+    /**
+     * DH2 bound left
+     * <p>
+     * Input: 13:30, 1:30
+     * Expected output: 40.16
+     */
+    @Test
+    public void testDummyTelBVDH2BoundL() {
+        try {
+            Assert.assertEquals("DH2BL", "40.16", DummyTelClass.DummyTel("13:30", "1:30"));
+        } catch (Exception e) {
+            Assert.fail("Fail caused by: " + e.getCause());
+        }
+    }
+
+    /**
+     * DM1 bound left
+     * <p>
+     * Input: 13:30, 0:00
+     * Expected output: 0.00
+     */
+    @Test
+    public void testDummyTelBVDM1BoundL() {
+        try {
+            Assert.assertEquals("DM1BL", "0.00", DummyTelClass.DummyTel("13:30", "0:00"));
+        } catch (Exception e) {
+            Assert.fail("Fail caused by: " + e.getCause());
+        }
+    }
+
+    /**
+     * DM1 bound near left
+     * <p>
+     * Input: 13:30, 0:-01
+     * Expected output: Invalid duration format
+     */
+    @Test
+    public void testDummyTelBVDM1BoundnL() {
+        Exception exception = Assert.assertThrows("DM1BnL", Exception.class, () -> DummyTelClass.DummyTel("13:30", "0:-01"));
+
+        Assert.assertTrue(exception.getMessage().contains("duration input is wrongly formatted"));
+    }
+
+    /**
+     * TM1 bound right
+     * <p>
+     * Input: 13:30, 0:59
+     * Expected output: 30.98
+     */
+    @Test
+    public void testDummyTelBVDM1BoundR() {
+        try {
+            Assert.assertEquals("DM1BR", "30.98", DummyTelClass.DummyTel("13:30", "0:59"));
+        } catch (Exception e) {
+            Assert.fail("Fail caused by: " + e.getCause());
+        }
+    }
+
+    /**
+     * TM1 bound near right
+     * <p>
+     * Input: 13:00, 0:60
+     * Expected output: Invalid duration format
+     */
+    @Test
+    public void testDummyTelBVDM1BoundnR() {
+        Exception exception = Assert.assertThrows("DM1BnR", Exception.class, () -> DummyTelClass.DummyTel("13:30", "0:60"));
+
+        Assert.assertTrue(exception.getMessage().contains("duration input is wrongly formatted"));
+    }
 }
