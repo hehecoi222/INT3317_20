@@ -4,28 +4,28 @@ import org.junit.Test;
 
 /**
  * JUnit test class using boundary value analysis
- *
+ * <p>
  * Description input:
- *  timeStart hour valid:
- *      TH1: [8:18)
- *      TH2: [0:8)
- *      TH3: [18:24)
- *  => Select {8, 7, 18, 17, 0, -1, 23, 24} addition with center point of each {4, 13, 21}
- *  timeStart minute valid:
- *      TM1: [0,60)
- *  => Select {0, -1, 59, 60} addition with center point {30}
- *  duration time valid:
- *      DH1: [0, 1)
- *      DH2: [1:INF)
- *  => Select {0, -1, 1} addition a representative {0}
- *  duration minute valid:
- *      DM1: [0,60)
- *  => Select {0, -1, 59, 60} addition with center point {30}
+ * timeStart hour valid:
+ * TH1: [8:18)
+ * TH2: [0:8)
+ * TH3: [18:24)
+ * => Select {8, 7, 18, 17, 0, -1, 23, 24} addition with center point of each {4, 13, 21}
+ * timeStart minute valid:
+ * TM1: [0,60)
+ * => Select {0, -1, 59, 60} addition with center point {30}
+ * duration time valid:
+ * DH1: [0, 1)
+ * DH2: [1:INF)
+ * => Select {0, -1, 1} addition a representative {0}
+ * duration minute valid:
+ * DM1: [0,60)
+ * => Select {0, -1, 59, 60} addition with center point {30}
  */
 public class DummyTelBVATest {
     /**
      * TH1 bound left
-     *
+     * <p>
      * Input: 8:30, 0:30
      * Expected output: 15.75
      */
@@ -40,7 +40,7 @@ public class DummyTelBVATest {
 
     /**
      * TH1 center
-     *
+     * <p>
      * Input: 13:30, 0:30
      * Expected output: 15.75
      */
@@ -55,7 +55,7 @@ public class DummyTelBVATest {
 
     /**
      * TH1 bound right
-     *
+     * <p>
      * Input: 17:30, 0:30
      * Expected output: 15.75
      */
@@ -70,7 +70,7 @@ public class DummyTelBVATest {
 
     /**
      * TH2 bound left
-     *
+     * <p>
      * Input: 0:30, 0:30
      * Expected output: 7.88
      */
@@ -85,7 +85,7 @@ public class DummyTelBVATest {
 
     /**
      * TH2 center
-     *
+     * <p>
      * Input: 4:30, 0:30
      * Expected output: 7.88
      */
@@ -100,7 +100,7 @@ public class DummyTelBVATest {
 
     /**
      * TH2 bound near left
-     *
+     * <p>
      * Input: -1:30, 0:30
      * Expected output: Invalid timeStart format
      */
@@ -113,7 +113,7 @@ public class DummyTelBVATest {
 
     /**
      * TH2 bound right
-     *
+     * <p>
      * Input: 7:30, 0:30
      * Expected output: 7.88
      */
@@ -128,7 +128,7 @@ public class DummyTelBVATest {
 
     /**
      * TH3 bound left
-     *
+     * <p>
      * Input: 18:30, 0:30
      * Expected output: 7.88
      */
@@ -143,7 +143,7 @@ public class DummyTelBVATest {
 
     /**
      * TH3 center
-     *
+     * <p>
      * Input: 21:30, 0:30
      * Expected output: 7.88
      */
@@ -158,7 +158,7 @@ public class DummyTelBVATest {
 
     /**
      * TH3 bound right
-     *
+     * <p>
      * Input: 23:30, 0:30
      * Expected output: 7.88
      */
@@ -173,7 +173,7 @@ public class DummyTelBVATest {
 
     /**
      * TH3 bound near right
-     *
+     * <p>
      * Input: 24:30, 0:30
      * Expected output: Invalid timeStart format
      */
@@ -186,7 +186,7 @@ public class DummyTelBVATest {
 
     /**
      * TM1 bound left
-     *
+     * <p>
      * Input: 13:00, 0:30
      * Expected output: 15.75
      */
@@ -201,7 +201,7 @@ public class DummyTelBVATest {
 
     /**
      * TM1 bound near left
-     *
+     * <p>
      * Input: 13:-01, 0:30
      * Expected output: Invalid timeStart format
      */
@@ -214,7 +214,7 @@ public class DummyTelBVATest {
 
     /**
      * TM1 bound right
-     *
+     * <p>
      * Input: 13:59, 0:30
      * Expected output: 15.75
      */
@@ -229,7 +229,7 @@ public class DummyTelBVATest {
 
     /**
      * TM1 bound near right
-     *
+     * <p>
      * Input: 13:60, 0:30
      * Expected output: Invalid timeStart format
      */
